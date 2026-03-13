@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="KochAppMainPage"
+             x:Class="Koch_App.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Grid
+                ColumnDefinitions="*, *, *, *, *" RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *">
+
+                <Image
+                Source="https://images.pexels.com/photos/3310691/pexels-photo-3310691.jpeg?_gl=1*12am39z*_ga*MTg2MzE2MTczOC4xNzczMDUwNzQx*_ga_8JE65Q40S6*czE3NzMwNTA3NDAkbzEkZzEkdDE3NzMwNTA5ODUkajU5JGwwJGgw"
+                HeightRequest="185"
+                WidthRequest="250"
+                Grid.Column="2"
+                Grid.Row="0"
+                Aspect="AspectFit"
+                SemanticProperties.Description="BANANA" />
+
+                <Image 
+                Source="https://images.eatthismuch.com/med/1337_SunTzu_ff8b946c-37aa-411e-8740-9d87490bbabf.png"
+                WidthRequest="100"
+                ScaleX="2"
+                Rotation="90"
+                Grid.Column="0"
+                Grid.Row="0"
+                class="Bana"
+                BindingContext="Bana"
+                SemanticProperties.Description="MOREBANANA" />
+
+                <Image 
+                Source="https://images.eatthismuch.com/med/1337_SunTzu_ff8b946c-37aa-411e-8740-9d87490bbabf.png"
+                WidthRequest="100"
+                ScaleX="2"
+                Rotation="270"
+                Grid.Column="4"
+                Grid.Row="0"
+                class="Bana"
+                BindingContext="Bana"
+                SemanticProperties.Description="MOREBANANANA" />
+
+                <Label
+                Text="Rezept Search"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                VerticalTextAlignment="Center"
+                Grid.ColumnSpan="5"
+                Grid.Row="1" />
+
+                <Label
+                Text="The Best Rezept Searcher app 2026"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                VerticalTextAlignment="Center" 
+                HorizontalTextAlignment="Center"
+                Grid.ColumnSpan="5"
+                Grid.Row="2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+
+                <Button
+                x:Name="DropDown"
+                Text="Search"
+                Grid.Column="0"
+                Grid.Row="3"
+                Clicked="DropDown_Clicked"
+                />
+
+
+                <StackLayout x:Name="Liste1" IsVisible="False" Grid.Row="4" Grid.RowSpan="2" Background="Gray">
+                    <Label    
+                x:Name="Label1"    
+                Text="by Name" 
+                Grid.Column="0" 
+                />
+
+                    <CheckBox
+                x:Name="Name"
+                IsChecked="True"
+                Grid.Column="0"
+                />
+
+                    <Label  
+                 x:Name="Label2"
+                Text="Ingredients" 
+                Grid.Column="1" 
+                />
+
+                    <CheckBox
+                x:Name="Ingredients"
+                Grid.Column="1"
+                />
+                </StackLayout>
+
+                <Button
+                x:Name="Tag"
+                Text="Tags"
+                Grid.Column="1"
+                Grid.Row="3"
+                BorderWidth="10"
+                Clicked="Tag_Clicked" />
+
+                <HorizontalStackLayout x:Name="TagList" IsVisible="False" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="5"  BackgroundColor="Gray">
+                    <Line
+                 X1="0"
+                 Y1="63"
+                 Y2="-90"
+                 X2="0" 
+                 Stroke="Black"/>
+                    <Label  
+                x:Name="Label3"
+                Text="Breakfast" 
+                Grid.Column="1"
+                Grid.Row="4"/>
+
+                    <CheckBox
+                x:Name="Breakfast"
+                Grid.Column="1"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                Grid.Row="4"/>
+
+                    <Label  
+                x:Name="Label4"
+                Text="Beef" 
+                Grid.Column="1"
+                Grid.Row="4"/>
+
+                    <CheckBox
+                x:Name="Beef"
+                Grid.Column="1"
+                Grid.Row="4"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+
+                    <Label  
+                x:Name="Label5"
+                Text="Chicken" 
+                Grid.Column="1"
+                Grid.Row="4"/>
+
+                    <CheckBox
+                x:Name="Chicken"
+                Grid.Column="1"
+                Grid.Row="4"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+
+                    <Label  
+                x:Name="Label12"
+                Text="Seafood" 
+                Grid.Column="1"
+                Grid.Row="4"/>
+
+                    <CheckBox
+                x:Name="Seafood"
+                Grid.Column="1"
+                Grid.Row="4"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout x:Name="TagList1" IsVisible="False" Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="5"  BackgroundColor="Gray">
+                    <Line
+                X1="0"
+                Y1="63"
+                Y2="-90"
+                X2="0" 
+                Stroke="Black"/>
+
+                    <Label  
+                x:Name="Label6"
+                Text="Dessert" 
+                Grid.Column="1"
+                Grid.Row="5"/>
+
+                    <CheckBox
+                x:Name="Dessert"
+                Grid.Column="1"
+                Grid.Row="5"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+
+                    <Label  
+                x:Name="Label13"
+                Text="Vegetarian" 
+                Grid.Column="1"
+                Grid.Row="5"/>
+
+                    <CheckBox
+                x:Name="Vegetarian"
+                Grid.Column="1"
+                Grid.Row="5"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+
+                    <Label  
+                x:Name="Label7"
+                Text="Goat" 
+                Grid.Column="1"
+                Grid.Row="5"/>
+
+                    <CheckBox
+                x:Name="Goat"
+                Grid.Column="1"
+                Grid.Row="5"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+
+                    <Label  
+                x:Name="Label8"
+                Text="Lamb" 
+                Grid.Column="1"
+                Grid.Row="5"/>
+
+                    <CheckBox
+                x:Name="Lamb"
+                Grid.Column="1"
+                Grid.Row="5"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout x:Name="TagList2" IsVisible="False" Grid.Row="6" Grid.Column="0"  Grid.ColumnSpan="5"  BackgroundColor="Gray">
+                    <Line
+                X1="0"
+                Y1="63"
+                Y2="-90"
+                X2="0" 
+                Stroke="Black"/>
+
+                    <Label  
+                x:Name="Label9"
+                Text="Miscellaneous" 
+                Grid.Column="1"
+                Grid.Row="6"/>
+
+                    <CheckBox
+                x:Name="Miscellaneous"
+                Grid.Column="1"
+                Grid.Row="6"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+
+                    <Label  
+                x:Name="Label10"
+                Text="Pasta" 
+                Grid.Column="1"
+                Grid.Row="6"/>
+
+                    <CheckBox
+                x:Name="Pasta"
+                Grid.Column="1"
+                Grid.Row="6"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+
+                    <Label  
+                x:Name="Label11"
+                Text="Pork" 
+                Grid.Column="1"
+                Grid.Row="6"/>
+
+                    <CheckBox
+                x:Name="Pork"
+                Grid.Column="1"
+                Grid.Row="6"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+
+                    <Label  
+                x:Name="Label14"
+                Text="Side" 
+                Grid.Column="1"
+                Grid.Row="6"/>
+
+                    <CheckBox
+                x:Name="Side"
+                Grid.Column="1"
+                Grid.Row="6"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout x:Name="TagList3" IsVisible="False" Grid.Row="6" Grid.Column="0"  Grid.ColumnSpan="5"  BackgroundColor="Gray">
+                    <Label  
+                x:Name="Label15"
+                Text="Starter" 
+                Grid.Column="1"
+                Grid.Row="4"/>
+
+                    <CheckBox
+                x:Name="Starter"
+                Grid.Column="1"
+                Grid.Row="4"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+
+                    <Label  
+                x:Name="Label16"
+                Text="Vegan" 
+                Grid.Column="1"
+                Grid.Row="4"/>
+
+                    <CheckBox
+                x:Name="Vegan"
+                Grid.Column="1"
+                Grid.Row="4"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+                </HorizontalStackLayout>
+
+                <Entry
+                x:Name="entry"
+                PlaceholderColor="Cyan"
+                ClearButtonVisibility="WhileEditing"
+                Placeholder="Say Hi for free cookies"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Completed="entry_Completed"
+                TextColor="Cyan"
+                Grid.ColumnSpan="5"
+                Grid.Row="7"
+                HorizontalOptions="CenterAndExpand"/>
+
+                <Label
+                    x:Name="CountTexts"
+                    Text=""
+                    x:DataType="x:String"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="9"
+                    HorizontalOptions="Start"
+                    MinimumWidthRequest="10"
+                    MinimumHeightRequest="30"
+                    FontAutoScalingEnabled="true"/>
+                <Label
+                    x:Name="MealNameText"
+                    Text="{Binding MealNameText}"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="8"/>
+                <Label
+                    x:Name="VegenAltText"
+                    Text="{Binding VegenAlt_Mainpage}"
+                    x:DataType="x:String"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="10"/>
+                <Label
+                    x:Name="TagText"
+                    Text="{Binding Tag_Mainpage}"
+                    x:DataType="x:String"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="11"/>
+                <Label
+                    x:Name="OriginText"
+                    Text="{Binding Origins_Mainpage}"
+                    x:DataType="x:String"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="12"/>
+                <Label
+                    x:Name="DescriptionText"
+                    Text="{Binding Description_Mainpage}"
+                    x:DataType="x:String"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="13"/>
+                <Label
+                    x:Name="Ingredients_Teiler"
+                    IsVisible="False"
+                    Text="-----Ingredients-----"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="14"/>
+                <Label
+                    x:Name="InstructionsText"
+                    IsVisible="False"
+                    Text="-----STEP BY STEP INSTRUCTIONS-----"
+                    x:DataType="x:String"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="16"/>
+                <Label
+                    x:Name="GuideText"
+                    Text="{Binding Guide_Mainpage}"
+                    x:DataType="x:String"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="17"/>
+            </Grid>
+            <CollectionView x:Name="IngredientsColltector" VerticalOptions="Center">
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
