@@ -7,6 +7,7 @@ using System.Reflection.Metadata;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 
 
@@ -36,11 +37,10 @@ namespace Koch_App
 
 
 
-        public
-    Image image = new Image
-    {
-        Source = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/3310691/pexels-photo-3310691.jpeg?_gl=1*12am39z*_ga*MTg2MzE2MTczOC4xNzczMDUwNzQx*_ga_8JE65Q40S6*czE3NzMwNTA3NDAkbzEkZzEkdDE3NzMwNTA5ODUkajU5JGwwJGgw"))
-    };
+        public Microsoft.Maui.Controls.Image image = new()
+        {
+            Source = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/3310691/pexels-photo-3310691.jpeg?_gl=1*12am39z*_ga*MTg2MzE2MTczOC4xNzczMDUwNzQx*_ga_8JE65Q40S6*czE3NzMwNTA3NDAkbzEkZzEkdDE3NzMwNTA5ODUkajU5JGwwJGgw"))
+        };
 
         private void DropDown_Clicked(object sender, EventArgs e)
         {
@@ -66,34 +66,34 @@ namespace Koch_App
                 Liste1.IsVisible = false;
             }
         }
+        async Task<Meals> GetMealsByName(string text)
+        {
+            var client = new RestClient("https://www.themealdb.com/api/json/v1/1/search.php?s=" + text);
+            var response = await client.GetAsync<Meals>(new RestRequest());
+
+            return response;
+
+        }
 
         private void entry_Completed(object sender, EventArgs e) // wenn  das erste mal Enter gedrückt wird macht es das was hier ist
         {
           Ingredients_Teiler.IsVisible = true;
             InstructionsText.IsVisible = true;
             string text = ((Entry)sender).Text; // wartet bis man das zweite mal enter gedrückt hat und kuckt denn text an. ka wie es anders geht
+
             if (text != null)
             {
                 if (Name.IsChecked == true)
                 {
-
-                    async Task<Meals> GetMealsByName()
-                    {
-                        var client = new RestClient("https://www.themealdb.com/api/json/v1/1/search.php?s=" + text);
-                        var response = await client.GetAsync<Meals>(new RestRequest());
-
-                        return response;
-
-                    }
-
                     Task.Run(async () =>
                     {
-                        var data = await GetMealsByName();
+                        var data = await GetMealsByName(text);
+
                         CountTexts.Text = ("Count: " + (data.LsMeals != null ? data.LsMeals?.Count : "0"));
                         foreach (var meal in data.LsMeals ?? [])
                         {
 
-                           string MealNameText = "Name: " + meal.Gericht;
+                            string MealNameText = "Name: " + meal.Gericht;
 
                             var propVegan = meal.Vegane_Variante;
                             if (!string.IsNullOrWhiteSpace(propVegan))
@@ -119,7 +119,7 @@ namespace Koch_App
                                 string Description_Mainpage = ("Description: " + meal.Beschreibung);
                             }
 
-                            var lsIngredients = new List<string>(); 
+                            var lsIngredients = new List<string>();
 
                             foreach (var property in meal.GetType().GetProperties())
                             {
@@ -139,12 +139,13 @@ namespace Koch_App
                                 }
                             }
 
-                            //BindableLayout.SetItemsSource(IngredientsColltector, lsIngredients);
-                            //var propAnleitung = meal.Anleitung;
-                            //if (!string.IsNullOrWhiteSpace(propAnleitung))
-                            //{
-                            //    string Guide_Mainpage = (meal.Anleitung + "\n");
-                            //}
+                            BindableLayout.SetItemsSource(IngredientsColltector, lsIngredients);
+                        
+                            var propAnleitung = meal.Anleitung;
+                            if (!string.IsNullOrWhiteSpace(propAnleitung))
+                            {
+                                string Guide_Mainpage = (meal.Anleitung + "\n");
+                            }
                             
                         }
                     });

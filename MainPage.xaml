@@ -385,8 +385,16 @@
                     Grid.Row="17"/>
             </Grid>
             <CollectionView x:Name="IngredientsColltector" VerticalOptions="Center">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label
+                           Text="{Binding LsIngredients}"
+                            x:DataType="x:String"
+                            Grid.Row="15"
+                            Grid.ColumnSpan="5"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
             </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
-
-</ContentPage>
+</ContentPage>                        
